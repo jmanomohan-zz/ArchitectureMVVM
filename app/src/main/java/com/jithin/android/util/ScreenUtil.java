@@ -17,7 +17,13 @@ import com.jithin.android.R;
 public class ScreenUtil {
     protected enum Show {Source, Article}
 
-    public static void show(Activity activity, Fragment fragment) {
+    public static void add(Activity activity, Fragment fragment) {
+        ((AppCompatActivity) activity).getSupportFragmentManager().beginTransaction()
+                .add(R.id.base_container, fragment, fragment.getClass().getSimpleName()).addToBackStack(null).commit();
+
+    }
+
+    public static void replace(Activity activity, Fragment fragment) {
         ((AppCompatActivity) activity).getSupportFragmentManager().beginTransaction()
                 .replace(R.id.base_container, fragment, fragment.getClass().getSimpleName()).addToBackStack(null).commit();
 

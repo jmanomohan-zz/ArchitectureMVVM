@@ -2,6 +2,7 @@ package com.jithin.core.repository;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
+import android.util.Log;
 
 import com.jithin.core.model.Articles;
 import com.jithin.core.model.Sources;
@@ -17,6 +18,7 @@ import retrofit2.Response;
 
 public class Repo implements RepositoryServices {
 
+    String TAG = Repo.class.getSimpleName();
 
     @Override
     public LiveData<SourceRepo> getSources() {
@@ -47,13 +49,16 @@ public class Repo implements RepositoryServices {
         call.enqueue(new Callback<Articles>() {
             @Override
             public void onResponse(Call<Articles> call, Response<Articles> response) {
+                Log.d(TAG, "onResponse: " + call.request().url());
                 ArticleRepo responses = new ArticleRepo();
                 responses.setArticles(response.body());
                 liveData.setValue(responses);
+                Log.d(TAG, "onResponse: " + (response.body() == null || response.body().getArticles() == null ? 0 : response.body().getArticles().size()));
             }
 
             @Override
             public void onFailure(Call<Articles> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + call.request().url());
                 ArticleRepo responses = new ArticleRepo();
                 responses.setError(t);
                 liveData.setValue(responses);

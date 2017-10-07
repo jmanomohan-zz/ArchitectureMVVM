@@ -3,6 +3,7 @@ package com.jithin.android.fragments;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -30,7 +31,7 @@ public class SourceFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_source, container, false);
+        return inflater.inflate(R.layout.fragment_recycler, container, false);
     }
 
     @Override
@@ -51,16 +52,16 @@ public class SourceFragment extends BaseFragment {
         refreshLayout.setRefreshing(true);
         viewModel.loadSource().observe(getActivity(), apiResponse -> {
             if (apiResponse != null && apiResponse.getSources() != null) {
-                sources.addAll(apiResponse.getSources().getSources());
+                sources = apiResponse.getSources().getSources();
                 adapter.setSources(sources);
                 adapter.notifyDataSetChanged();
             } else {
-//                Snackbar mySnackbar = Snackbar.make(view.findViewById(R.id.base_container),
-//                        "Something went wrong!", Snackbar.LENGTH_INDEFINITE);
-//                mySnackbar.setAction("Retry", view1 -> {
-//                    loadArticles(view, viewModel, refreshLayout);
-//                });
-//                mySnackbar.show();
+                Snackbar mySnackbar = Snackbar.make(view.findViewById(R.id.fragment_c),
+                        "Something went wrong!", Snackbar.LENGTH_INDEFINITE);
+                mySnackbar.setAction("Retry", view1 -> {
+                    loadArticles(view, viewModel, refreshLayout);
+                });
+                mySnackbar.show();
             }
             refreshLayout.setRefreshing(false);
         });

@@ -13,22 +13,11 @@ import com.jithin.core.repository.Repo;
  */
 
 public class ArticleViewModel extends ViewModel {
-    private MediatorLiveData<ArticleRepo> mApiResponse;
-
-    // No argument constructor
-    public ArticleViewModel() {
-        mApiResponse = new MediatorLiveData<>();
-    }
-
-    @NonNull
-    public LiveData<ArticleRepo> getApiResponse() {
-        return mApiResponse;
-    }
-
     public LiveData<ArticleRepo> loadArticles(@NonNull String source, @NonNull String sort) {
+        MediatorLiveData<ArticleRepo> mApiResponse = new MediatorLiveData<>();
         mApiResponse.addSource(
                 new Repo().getArticles(source, sort),
-                apiResponse -> mApiResponse.setValue(apiResponse)
+                apiResponse -> mApiResponse.postValue(apiResponse)
         );
         return mApiResponse;
     }

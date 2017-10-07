@@ -10,8 +10,22 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ScreenUtil.add(this, new SourceFragment());
 
-        if (savedInstanceState == null)
-            ScreenUtil.show(this, new SourceFragment());
+        setTitle("News");
+        setSubTitle("Powered By NewsApi.org");
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if (getSupportFragmentManager().getBackStackEntryCount() == 2)
+            setTitle("News");
+
+        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+            getSupportFragmentManager().popBackStack();
+        } else {
+            finish();
+        }
     }
 }

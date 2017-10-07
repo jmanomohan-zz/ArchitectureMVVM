@@ -1,6 +1,5 @@
 package com.jithin.android.activities;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -36,9 +35,7 @@ public class BaseActivity extends AppCompatActivity {
                 invalidateOptionsMenu();
             }
         };
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-            drawerLayout.setFitsSystemWindows(true);
-        }
+        drawerLayout.setFitsSystemWindows(true);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
     }

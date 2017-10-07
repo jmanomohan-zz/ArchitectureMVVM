@@ -34,8 +34,8 @@ public class SourceAdapter extends RecyclerView.Adapter<SourceAdapter.Holder> {
         holder.itemView.setOnClickListener(view1 -> {
             if (holder.getAdapterPosition() != RecyclerView.NO_POSITION && sources != null && sources.size() > holder.getAdapterPosition()) {
                 ArticleFragment fragment = new ArticleFragment();
-                fragment.setArgs(sources.get(holder.getAdapterPosition()).getId(), "latest");
-                ScreenUtil.show((AppCompatActivity) view.getContext(), fragment);
+                fragment.setArgs(sources.get(holder.getAdapterPosition()).getName(), sources.get(holder.getAdapterPosition()).getId(), "top");
+                ScreenUtil.replace((AppCompatActivity) view.getContext(), fragment);
             }
         });
         return holder;
