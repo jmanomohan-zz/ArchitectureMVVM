@@ -50,9 +50,9 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.Holder> 
         String date = Util.parseDate(article.getPublishedAt());
         String author = article.getAuthor();
         if (author != null)
-            info += "By " + author;
+            info += "more at " + author;
         if (date != null)
-            info += " on " + date;
+            info += ", " + date;
         holder.text_info.setText(info);
         ImageUtil.load(holder.image, article.getUrlToImage());
     }

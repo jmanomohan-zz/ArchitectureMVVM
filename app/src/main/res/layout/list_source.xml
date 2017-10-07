@@ -2,11 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/text_source_number"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:hint="1."
+        android:layout_marginLeft="16dp"
+        android:textColor="@color/text_black"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/text_source_name"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="16dp" />
+        android:layout_weight="1"
+        android:hint="@string/app_name"
+        android:padding="16dp"
+        android:textColor="@color/text_black"
+        android:textSize="16sp" />
 </LinearLayout>

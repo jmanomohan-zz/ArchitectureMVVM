@@ -43,7 +43,9 @@ public class SourceAdapter extends RecyclerView.Adapter<SourceAdapter.Holder> {
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
+        String no = (position + 1) + ".";
         holder.text_name.setText(sources.get(position).getName());
+        holder.text_no.setText(no);
     }
 
     @Override
@@ -54,10 +56,12 @@ public class SourceAdapter extends RecyclerView.Adapter<SourceAdapter.Holder> {
 
     public static class Holder extends RecyclerView.ViewHolder {
         TextView text_name;
+        TextView text_no;
 
         public Holder(View itemView) {
             super(itemView);
             text_name = itemView.findViewById(R.id.text_source_name);
+            text_no = itemView.findViewById(R.id.text_source_number);
         }
     }
 

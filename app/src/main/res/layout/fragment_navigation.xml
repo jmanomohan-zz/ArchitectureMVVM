@@ -1,9 +1,46 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/white"
     tools:context="com.jithin.android.fragments.NavigationFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-</FrameLayout>
+        <com.jithin.android.custom.TextViewCustom
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <com.jithin.android.custom.TextViewCustom
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:text="@string/toolbar_subtext"
+            android:textColor="@color/bg_white"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <com.jithin.android.custom.TextViewCustom
+        android:id="@+id/text_built_no"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:hint="built version"
+        android:padding="16dp"
+        android:textSize="10sp" />
+
+</RelativeLayout>

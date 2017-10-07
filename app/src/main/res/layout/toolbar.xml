@@ -6,4 +6,5 @@
     android:layout_height="@dimen/toolbar_height"
     android:layout_weight="1"
     android:background="@color/colorPrimary"
-    android:elevation="4dp" />
+    android:elevation="4dp"
+    app:subtitleTextAppearance="@color/text_black" />
