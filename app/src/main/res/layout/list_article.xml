@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="133dp"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp">
+
+    <com.jithin.android.custom.ImageViewSquare
+        android:id="@+id/image_article"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/white"
+        android:scaleType="centerCrop" />
+
+    <com.jithin.android.custom.TextViewCustom
+        android:id="@+id/text_article_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@id/image_article"
+        android:ellipsize="end"
+        android:hint="Article Title"
+        android:maxLines="2"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <com.jithin.android.custom.TextViewCustom
+        android:id="@+id/text_article_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_article_title"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@id/image_article"
+        android:ellipsize="end"
+        android:hint="Article Description will be displayed here. Max two lines"
+        android:maxLines="2"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+    <com.jithin.android.custom.TextViewCustom
+        android:id="@+id/text_article_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/divider"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@id/image_article"
+        android:ellipsize="end"
+        android:hint="By Author on Sept 12"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="0.25dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="16dp"
+        android:background="@color/text_black" />
+</RelativeLayout>

@@ -3,6 +3,7 @@ package com.jithin.android.fragments;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -34,19 +35,34 @@ public class SourceFragment extends BaseFragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        SwipeRefreshLayout refreshLayout = view.findViewById(R.id.refresher_list);
         RecyclerView recyclerView = view.findViewById(R.id.recycler_productlist);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new SourceAdapter();
-
+        recyclerView.setAdapter(adapter);
 
         SourcesViewModel viewModel = ViewModelProviders.of(getActivity()).get(SourcesViewModel.class);
+        loadArticles(view, viewModel, refreshLayout);
+        refreshLayout.setOnRefreshListener(() -> loadArticles(view, viewModel, refreshLayout));
+
+    }
+
+    private void loadArticles(View view, SourcesViewModel viewModel, SwipeRefreshLayout refreshLayout) {
+        refreshLayout.setRefreshing(true);
         viewModel.loadSource().observe(getActivity(), apiResponse -> {
             if (apiResponse != null && apiResponse.getSources() != null) {
                 sources.addAll(apiResponse.getSources().getSources());
-                adapter.setProducts(sources);
-                recyclerView.setAdapter(adapter);
+                adapter.setSources(sources);
+                adapter.notifyDataSetChanged();
+            } else {
+//                Snackbar mySnackbar = Snackbar.make(view.findViewById(R.id.base_container),
+//                        "Something went wrong!", Snackbar.LENGTH_INDEFINITE);
+//                mySnackbar.setAction("Retry", view1 -> {
+//                    loadArticles(view, viewModel, refreshLayout);
+//                });
+//                mySnackbar.show();
             }
+            refreshLayout.setRefreshing(false);
         });
-
     }
 }
