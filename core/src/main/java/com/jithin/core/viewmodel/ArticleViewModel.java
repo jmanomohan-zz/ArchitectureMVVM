@@ -5,7 +5,7 @@ import android.arch.lifecycle.MediatorLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.support.annotation.NonNull;
 
-import com.jithin.core.repository.ArticleRepo;
+import com.jithin.core.model.Articles;
 import com.jithin.core.repository.Repo;
 
 /**
@@ -13,8 +13,8 @@ import com.jithin.core.repository.Repo;
  */
 
 public class ArticleViewModel extends ViewModel {
-    public LiveData<ArticleRepo> loadArticles(@NonNull String source, @NonNull String sort) {
-        MediatorLiveData<ArticleRepo> mApiResponse = new MediatorLiveData<>();
+    public LiveData<Articles> loadArticles(@NonNull String source, @NonNull String sort) {
+        MediatorLiveData<Articles> mApiResponse = new MediatorLiveData<>();
         mApiResponse.addSource(
                 new Repo().getArticles(source, sort),
                 apiResponse -> mApiResponse.postValue(apiResponse)

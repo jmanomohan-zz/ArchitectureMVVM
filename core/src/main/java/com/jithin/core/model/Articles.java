@@ -1,16 +1,29 @@
 package com.jithin.core.model;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
 import java.util.List;
 
 /**
  * Created by Jithin on 06/10/17.
  */
-
+@Entity
 public class Articles {
+    private long updated_at;
     private String status;
+    @PrimaryKey
     private String source;
     private String sortBy;
     private List<Article> articles;
+
+    public long getUpdated_at() {
+        return updated_at;
+    }
+
+    public void setUpdated_at(long updated_at) {
+        this.updated_at = updated_at;
+    }
 
     public String getStatus() {
         return status;

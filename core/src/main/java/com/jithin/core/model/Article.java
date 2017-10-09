@@ -1,16 +1,31 @@
 package com.jithin.core.model;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+
 /**
  * Created by Jithin on 06/10/17.
  */
-
+@Entity(foreignKeys = @ForeignKey(
+        entity = Articles.class,
+        parentColumns = "source",
+        childColumns = "source"))
 public class Article {
+    private String source;
     private String author;
     private String title;
     private String description;
     private String url;
     private String urlToImage;
     private String publishedAt;
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
 
     public String getAuthor() {
         return author;

@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -52,12 +53,13 @@ public class SourceFragment extends BaseFragment {
         refreshLayout.setRefreshing(true);
         viewModel.loadSource().observe(getActivity(), apiResponse -> {
             if (apiResponse != null && apiResponse.getSources() != null) {
-                sources = apiResponse.getSources().getSources();
+                sources = apiResponse.getSources();
                 adapter.setSources(sources);
                 adapter.notifyDataSetChanged();
             } else {
                 Snackbar mySnackbar = Snackbar.make(view.findViewById(R.id.fragment_c),
                         "Something went wrong!", Snackbar.LENGTH_INDEFINITE);
+                mySnackbar.setActionTextColor(ContextCompat.getColor(getContext(), R.color.white));
                 mySnackbar.setAction("Retry", view1 -> {
                     loadArticles(view, viewModel, refreshLayout);
                 });

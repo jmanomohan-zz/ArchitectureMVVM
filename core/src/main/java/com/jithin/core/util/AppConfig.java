@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
+import com.jithin.core.database.AppDatabase;
+
 import java.util.Properties;
 
 /**
@@ -18,6 +20,7 @@ public class AppConfig {
 
     public void init(Context context) {
         this.context = context.getApplicationContext();
+        AppDatabase.getDatabase(context.getApplicationContext());
         AssetsPropertyReader apr = new AssetsPropertyReader(this.context);
         app_config.putAll(apr.getProperties("app_config.properties"));
         try {

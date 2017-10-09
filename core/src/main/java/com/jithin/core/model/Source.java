@@ -1,10 +1,19 @@
 package com.jithin.core.model;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.PrimaryKey;
+
 /**
  * Created by Jithin on 06/10/17.
  */
-
+@Entity(foreignKeys = @ForeignKey(
+        entity = Sources.class,
+        parentColumns = "id",
+        childColumns = "sourceId"))
 public class Source {
+    private  int sourceId;
+    @PrimaryKey
     private String id;
     private String name;
     private String description;
@@ -12,6 +21,14 @@ public class Source {
     private String category;
     private String language;
     private String country;
+
+    public int getSourceId() {
+        return sourceId;
+    }
+
+    public void setSourceId(int sourceId) {
+        this.sourceId = sourceId;
+    }
 
     public String getId() {
         return id;

@@ -5,8 +5,7 @@ package com.jithin.core.util;
  */
 
 public class Constants {
-    public final static String jithin_SESSION = "jithin_session";
-    public final static String VIGEON_COOKIE = "vigeon_cookie";
+    public static final long CACHE_EXPIRY = 180000;
     public static final String USER_PREF = "USER_PREF";
     public static final String APP_VERSION_NAME = "app_version_name";
     public static final String APP_VERSION_CODE = "app_version_code";
